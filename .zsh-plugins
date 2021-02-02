@@ -1,0 +1,28 @@
+# Completions
+if [[ ! -f ~/.zsh/completion/_docker ]]; then
+  mkdir -p ~/.zsh/completion
+  curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose
+  curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/zsh/_docker > ~/.zsh/completion/_docker
+fi
+
+fpath=(~/.zsh/completion $fpath)
+  
+
+if [[ ! -f ~/.zpm/zpm.zsh ]]; then
+  mkdir -p ~/.zpm
+  git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
+fi
+source ~/.zpm/zpm.zsh
+
+zpm load @omz
+zpm load @omz-lib/docker
+zpm load @omz-lib/docker-compose
+zpm load @omz-lib/npm
+zpm load @omz-lib/git
+zpm load @omz-lib/golang
+
+zpm load zsh-users/zsh-autosuggestions,source:zsh-autosuggestions.zsh
+zpm load zdharma/fast-syntax-highlighting
+zpm load agkozak/zsh-z
+zpm load Aloxaf/fzf-tab
+zpm load nocttuam/autodotenv

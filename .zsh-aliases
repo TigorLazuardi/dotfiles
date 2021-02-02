@@ -1,0 +1,5 @@
+alias sq="sequelize-cli"
+alias ls="exa -l"
+alias cat="bat"
+alias KDO="kitty +kitten ssh -p 5522 tigor@206.189.149.81"
+alias dc="docker-compose"
