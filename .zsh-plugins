@@ -8,21 +8,23 @@ fi
 fpath=(~/.zsh/completion $fpath)
   
 
-if [[ ! -f ~/.zpm/zpm.zsh ]]; then
-  mkdir -p ~/.zpm
-  git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
+if [[ ! -f ~/.zgen/zgen.zsh ]]; then
+  git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 fi
-source ~/.zpm/zpm.zsh
+source "${HOME}/.zgen/zgen.zsh"
 
-zpm load @omz
-zpm load @omz-lib/docker
-zpm load @omz-lib/docker-compose
-zpm load @omz-lib/npm
-zpm load @omz-lib/git
-zpm load @omz-lib/golang
+if ! zgen saved; then
+  zgen oh-my-zsh
+  zgen oh-my-zsh plugins/docker
+  zgen oh-my-zsh plugins/docker-compose
+  zgen oh-my-zsh plugins/npm
+  zgen oh-my-zsh plugins/git
+  zgen oh-my-zsh plugins/golang
 
-zpm load zsh-users/zsh-autosuggestions,source:zsh-autosuggestions.zsh
-zpm load zdharma/fast-syntax-highlighting
-zpm load agkozak/zsh-z
-zpm load Aloxaf/fzf-tab
-zpm load nocttuam/autodotenv
+  zgen load zsh-users/zsh-autosuggestions
+  zgen load zdharma/fast-syntax-highlighting
+  zgen load agkozak/zsh-z
+  zgen load Aloxaf/fzf-tab
+
+  zgen save
+fi

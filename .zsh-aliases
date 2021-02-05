@@ -1,3 +1,5 @@
 alias ls="exa -l"
 alias cat="bat"
 alias dc="docker-compose"
+alias KDO="kitty +kitten ssh -p 5522 tigor@206.189.149.81"
+alias watch="watchexec -r -d 0 -s SIGTERM"
